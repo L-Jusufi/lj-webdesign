@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LJ Webdesign – Websites von Hand programmiert, aus Baden</title>
+  <meta name="description" content="LJ Webdesign gestaltet und programmiert moderne Websites für KMU, Vereine und Selbstständige – von Hand, ohne Baukasten.">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230a0a0a'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='monospace' font-weight='700' font-size='26' fill='%23ff8f5e'%3ELJ%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;500;700&family=Caveat:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <header class="site-header" id="top">
+    <div class="container nav">
+      <a href="#top" class="logo" aria-label="LJ Webdesign – zur Startseite">
+        <span class="logo-mark">LJ</span>
+        <span class="logo-text">Webdesign</span>
+      </a>
+
+      <nav class="nav-links" id="nav-links" aria-label="Hauptnavigation">
+        <a href="#leistungen">Leistungen</a>
+        <a href="#spielwiese">Spielwiese</a>
+        <a href="#ablauf">Ablauf</a>
+        <a href="#preise">Preise</a>
+        <a href="#ueber-mich">Über mich</a>
+        <a href="#kontakt" class="btn btn-primary btn-sm nav-cta">Projekt anfragen</a>
+      </nav>
+
+      <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- Startbereich mit interaktivem Punkte-Feld -->
+    <section class="hero">
+      <canvas class="hero-canvas" id="dots" aria-hidden="true"></canvas>
+      <div class="container hero-inner">
+        <p class="status"><span class="dot"></span>Verfügbar für neue Projekte</p>
+        <h1 aria-label="Websites, die man nicht vergisst.">
+          <span class="scramble" aria-hidden="true">Websites, die</span>
+          <span class="scramble" aria-hidden="true">man <span class="hl">nicht</span></span>
+          <span class="scramble" aria-hidden="true">vergisst.</span>
+        </h1>
+        <div class="hero-bottom">
+          <p class="lead">
+            Ich bin LJ, Webdesigner aus Baden. Ich gestalte und programmiere Websites von Hand –
+            Zeile für Zeile, ohne Baukasten.
+          </p>
+          <div class="hero-actions">
+            <a href="#kontakt" class="btn btn-primary">Projekt anfragen
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="#spielwiese" class="btn btn-ghost">
+              <span class="mono">&gt;_</span> Terminal ausprobieren
+            </a>
+          </div>
+        </div>
+        <p class="hero-hint" aria-hidden="true">← Bewegen Sie die Maus über die Punkte</p>
+      </div>
+
+      <!-- Laufband -->
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker-track">
+          <ul><li>Von Hand programmiert</li><li>Ohne Baukasten</li><li>Mobil optimiert</li><li>Antwort innert 24 h</li><li>Kein Tracking</li><li>Website gehört Ihnen</li></ul>
+          <ul><li>Von Hand programmiert</li><li>Ohne Baukasten</li><li>Mobil optimiert</li><li>Antwort innert 24 h</li><li>Kein Tracking</li><li>Website gehört Ihnen</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Leistungen -->
+    <section class="section" id="leistungen">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">Leistungen</p>
+          <h2>Was ich für Sie mache.</h2>
+        </div>
+
+        <ol class="services">
+          <li class="service reveal">
+            <span class="s-num">01</span>
+            <h3>Webdesign</h3>
+            <p>Ein eigenes Design, passend zu Ihrer Marke – keine Vorlage von der Stange.</p>
+            <span class="s-arrow" aria-hidden="true">→</span>
+          </li>
+          <li class="service reveal">
+            <span class="s-num">02</span>
+            <h3>Programmierung</h3>
+            <p>Sauberer Code, von Hand geschrieben. Schnell, sicher und ohne unnötigen Ballast.</p>
+            <span class="s-arrow" aria-hidden="true">→</span>
+          </li>
+          <li class="service reveal">
+            <span class="s-num">03</span>
+            <h3>Mobil optimiert</h3>
+            <p>Sieht auf dem Handy genauso gut aus wie am Computer.</p>
+            <span class="s-arrow" aria-hidden="true">→</span>
+          </li>
+          <li class="service reveal">
+            <span class="s-num">04</span>
+            <h3>Bei Google gefunden</h3>
+            <p>Saubere Struktur und Google-Einrichtung, damit man Sie in der Region findet.</p>
+            <span class="s-arrow" aria-hidden="true">→</span>
+          </li>
+          <li class="service reveal">
+            <span class="s-num">05</span>
+            <h3>Hosting &amp; Wartung</h3>
+            <p>Auf Wunsch kümmere ich mich um Updates, Backups und kleine Änderungen.</p>
+            <span class="s-arrow" aria-hidden="true">→</span>
+          </li>
+          <li class="service reveal">
+            <span class="s-num">06</span>
+            <h3>Redesign</h3>
+            <p>Ihre alte Website wirkt veraltet? Ich bringe sie auf den neusten Stand.</p>
+            <span class="s-arrow" aria-hidden="true">→</span>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Spielwiese: Terminal und Live-Editor -->
+    <section class="section section-alt" id="spielwiese">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">Spielwiese</p>
+          <h2>Nicht nur reden – <span class="hl">ausprobieren.</span></h2>
+          <p>Zwei kleine Programme, die ich für diese Seite geschrieben habe. Tippen, klicken, spielen.</p>
+        </div>
+
+        <div class="playground">
+          <!-- Terminal -->
+          <div class="terminal reveal" id="terminal">
+            <div class="win-bar">
+              <span class="tl"></span><span class="tl"></span><span class="tl"></span>
+              <span class="win-title">lj@baden: ~</span>
+            </div>
+            <div class="term-out" id="term-out" role="log" aria-live="polite"></div>
+            <form class="term-line" id="term-form" autocomplete="off">
+              <label class="term-prompt" for="term-input">lj@baden:~$</label>
+              <input id="term-input" type="text" spellcheck="false" autocapitalize="off" placeholder="help">
+            </form>
+            <div class="term-chips" aria-label="Befehle zum Anklicken">
+              <button type="button" data-cmd="help">help</button>
+              <button type="button" data-cmd="leistungen">leistungen</button>
+              <button type="button" data-cmd="preis">preis</button>
+              <button type="button" data-cmd="farbe blau">farbe blau</button>
+              <button type="button" data-cmd="kontakt">kontakt</button>
+            </div>
+          </div>
+
+          <!-- Live-Editor -->
+          <div class="editor reveal" id="editor">
+            <div class="win-bar">
+              <span class="tl"></span><span class="tl"></span><span class="tl"></span>
+              <span class="win-title">style.css</span>
+              <span class="editor-hint" aria-hidden="true">Probier mich aus!</span>
+            </div>
+            <div class="editor-body">
+              <pre class="code" aria-label="CSS-Code der Vorschau"><code id="code"></code></pre>
+              <div class="preview" id="preview" aria-label="Vorschau einer Beispiel-Website">
+                <div class="pv-nav"><b>Café Linde</b><span><i>Menü</i><i>Kontakt</i></span></div>
+                <div class="pv-img"></div>
+                <h4>Frisch geröstet.<br>Mit Liebe serviert.</h4>
+                <p>Hausgemachte Kuchen und feiner Kaffee in Baden.</p>
+                <span class="pv-btn">Tisch reservieren</span>
+              </div>
+            </div>
+            <div class="editor-controls">
+              <div class="ctrl">
+                <span class="ctrl-label" id="lbl-color">Farbe</span>
+                <div class="swatches" role="group" aria-labelledby="lbl-color">
+                  <button type="button" data-color="#e8552a" style="--c:#e8552a" aria-label="Orange" aria-pressed="true"></button>
+                  <button type="button" data-color="#2f6f5e" style="--c:#2f6f5e" aria-label="Tannengrün" aria-pressed="false"></button>
+                  <button type="button" data-color="#2d5bd7" style="--c:#2d5bd7" aria-label="Blau" aria-pressed="false"></button>
+                  <button type="button" data-color="#b8336a" style="--c:#b8336a" aria-label="Beere" aria-pressed="false"></button>
+                  <button type="button" data-color="#1b1a17" style="--c:#1b1a17" aria-label="Schwarz" aria-pressed="false"></button>
+                </div>
+              </div>
+              <div class="ctrl">
+                <label class="ctrl-label" for="radius">Ecken</label>
+                <input type="range" id="radius" min="0" max="28" value="14">
+              </div>
+              <div class="ctrl">
+                <span class="ctrl-label" id="lbl-font">Schrift</span>
+                <div class="seg" role="group" aria-labelledby="lbl-font">
+                  <button type="button" data-font="sans" aria-pressed="true">Modern</button>
+                  <button type="button" data-font="serif" aria-pressed="false">Klassisch</button>
+                  <button type="button" data-font="mono" aria-pressed="false">Technisch</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Unter der Haube -->
+    <section class="section" id="technik">
+      <div class="container">
+        <div class="panel">
+          <div class="tech-grid">
+            <div class="tech-copy reveal">
+              <p class="kicker">Unter der Haube</p>
+              <h2>Von Hand programmiert. <span class="hl">Nicht zusammengeklickt.</span></h2>
+              <p>
+                Diese Website habe ich selbst geschrieben – mit HTML, CSS und JavaScript, ohne Baukasten und ohne
+                schwere Frameworks. Genau so baue ich auch Ihre Website: schlank, schnell und sauber.
+              </p>
+              <ul class="tech-tags">
+                <li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>Canvas</li><li>Responsive</li><li>SEO</li>
+              </ul>
+            </div>
+
+            <div class="stats reveal">
+              <div class="stat stat-live">
+                <span class="stat-label"><span class="dot"></span>Ladezeit bei Ihnen</span>
+                <strong data-stat="load">–</strong>
+                <small>gerade live gemessen</small>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Grösse dieser Seite</span>
+                <strong data-stat="weight">–</strong>
+                <small>HTML, CSS &amp; JavaScript</small>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Zeilen Code</span>
+                <strong data-stat="lines" data-fallback="2000">–</strong>
+                <small>alle von Hand geschrieben</small>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Tracking-Cookies</span>
+                <strong>0</strong>
+                <small>Ihre Besucher bleiben privat</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ablauf -->
+    <section class="section" id="ablauf">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">Ablauf</p>
+          <h2>In vier Schritten online.</h2>
+        </div>
+
+        <div class="journey" id="journey">
+          <div class="journey-line" aria-hidden="true"><span class="journey-fill"></span></div>
+          <ol class="steps">
+            <li class="step">
+              <span class="step-dot" aria-hidden="true"></span>
+              <span class="step-time">Kostenlos · ca. 30 Min.</span>
+              <h3>Kennenlernen</h3>
+              <p>Wir sprechen über Ihre Ideen, Wünsche und Ihr Budget – per Telefon, Video oder vor Ort.</p>
+            </li>
+            <li class="step">
+              <span class="step-dot" aria-hidden="true"></span>
+              <span class="step-time">Innert 2 Tagen</span>
+              <h3>Offerte</h3>
+              <p>Sie erhalten eine verbindliche Offerte, Seite für Seite aufgelistet.</p>
+            </li>
+            <li class="step">
+              <span class="step-dot" aria-hidden="true"></span>
+              <span class="step-time">1–3 Wochen</span>
+              <h3>Design &amp; Code</h3>
+              <p>Erst der Entwurf, dann Ihr Feedback, dann programmiere ich alles.</p>
+            </li>
+            <li class="step">
+              <span class="step-dot" aria-hidden="true"></span>
+              <span class="step-time">Und danach</span>
+              <h3>Livegang</h3>
+              <p>Ihre Website geht online – und ich bleibe für Sie erreichbar.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Preise -->
+    <section class="section section-alt" id="preise">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">Preise</p>
+          <h2>Fair und transparent – <span class="hl">pro Seite.</span></h2>
+          <p>Keine Pakete, keine versteckten Kosten. Sie zahlen nur, was Sie wirklich brauchen.</p>
+        </div>
+
+        <div class="pricing">
+          <div class="rates">
+            <article class="rate reveal">
+              <div class="rate-top">
+                <div>
+                  <h3>Preis pro Seite</h3>
+                  <p>Je nachdem, wie viel Arbeit in der Seite steckt.</p>
+                </div>
+                <p class="rate-price"><span>CHF</span> 120–250</p>
+              </div>
+
+              <div class="rate-scale" aria-hidden="true">
+                <div class="scale-bar"></div>
+                <div class="scale-labels"><span>CHF 120</span><span>CHF 250</span></div>
+              </div>
+
+              <div class="rate-cta">
+                <span class="rate-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+                <div>
+                  <strong>Was kostet Ihre Website genau?</strong>
+                  <p>Schreiben Sie mir kurz, was Sie brauchen – Sie erhalten eine kostenlose Offerte innert 24 Stunden.</p>
+                </div>
+                <a href="#kontakt" class="btn btn-primary btn-sm">Jetzt anfragen
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+              </div>
+            </article>
+
+            <div class="included reveal">
+              <h3>Bei jeder Website inklusive</h3>
+              <ul>
+                <li>Responsive Design</li>
+                <li>SEO-Grundlagen</li>
+                <li>SSL-Verschlüsselung</li>
+                <li>Kontaktformular</li>
+                <li>2 Korrekturrunden</li>
+                <li>Persönliche Einführung</li>
+              </ul>
+            </div>
+
+            <div class="care reveal">
+              <div>
+                <h3>Wartung &amp; Hosting <span class="opt-tag">optional</span></h3>
+                <p>Updates, Backups und kleine Änderungen – Preis je nach Aufwand.</p>
+              </div>
+              <a href="#kontakt" class="btn btn-ghost btn-sm" data-scope="Wartung">Auf Anfrage</a>
+            </div>
+          </div>
+
+          <!-- Preisrechner -->
+          <aside class="calc reveal" id="rechner" aria-labelledby="calc-title">
+            <div class="calc-head">
+              <h3 id="calc-title">Preisrechner</h3>
+              <span class="calc-pill">Unverbindlich</span>
+            </div>
+
+            <div class="calc-row">
+              <div><strong>Anzahl Seiten</strong><small>CHF 120–250 pro Seite</small></div>
+              <div class="stepper">
+                <button type="button" data-step="-1" aria-label="Eine Seite weniger">−</button>
+                <output aria-live="polite">4</output>
+                <button type="button" data-step="1" aria-label="Eine Seite mehr">+</button>
+              </div>
+            </div>
+
+            <fieldset class="calc-extras">
+              <legend>Extras</legend>
+              <label class="extra">
+                <input type="checkbox" data-extra="cms" data-min="250" data-max="400">
+                <span>Inhalte selbst bearbeiten (CMS)</span>
+                <small>+ 250–400</small>
+              </label>
+              <label class="extra">
+                <input type="checkbox" data-extra="lang" data-pct="0.5">
+                <span>Zweite Sprache</span>
+                <small>+ 50 % der Seiten</small>
+              </label>
+              <label class="extra">
+                <input type="checkbox" data-extra="text" data-per-page-min="40" data-per-page-max="60">
+                <span>Texte schreibe ich für Sie</span>
+                <small>+ 40–60 / Seite</small>
+              </label>
+              <label class="extra">
+                <input type="checkbox" data-extra="logo" data-min="150" data-max="300">
+                <span>Logo-Design</span>
+                <small>+ 150–300</small>
+              </label>
+            </fieldset>
+
+            <div class="calc-total">
+              <small>Geschätzter Preis</small>
+              <strong id="calc-total">CHF 480 – 1’000</strong>
+              <span id="calc-summary">einmalig · 4 Seiten</span>
+            </div>
+            <button type="button" class="btn btn-primary btn-block" id="calc-cta">
+              Diese Schätzung anfragen
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+            <p class="calc-note">Nach einem kurzen Gespräch erhalten Sie eine verbindliche Offerte – ohne versteckte Kosten.</p>
+          </aside>
+        </div>
+
+        <p class="price-note">Alle Preise in CHF. Domain und externe Lizenzen werden separat und transparent ausgewiesen.</p>
+      </div>
+    </section>
+
+    <!-- Über mich -->
+    <section class="section" id="ueber-mich">
+      <div class="container about">
+        <div class="about-photo reveal">
+          <div class="portrait">
+            <!-- Hier ein Foto einsetzen: <img src="portrait.jpg" alt="Portrait von LJ"> -->
+            <span>LJ</span>
+            <code class="portrait-code">&lt;img src="ich.jpg"&gt;</code>
+          </div>
+          <p class="photo-note">Das bin ich – Ihr direkter Ansprechpartner.</p>
+        </div>
+
+        <div class="about-copy reveal">
+          <p class="kicker">Über mich</p>
+          <h2>Hoi, ich bin <span class="hl">LJ.</span></h2>
+          <p>
+            Ich bin Webdesigner aus der Region Baden und verwandle Ideen gerne in Code. Ich helfe KMU, Vereinen
+            und Selbstständigen, online gut auszusehen – mit Websites, die funktionieren und die Sie verstehen.
+          </p>
+          <p>
+            Bei mir gibt es kein Callcenter und kein Fachchinesisch: Sie haben eine Person, die Ihr Projekt kennt
+            und für Sie erreichbar ist.
+          </p>
+          <ul class="values">
+            <li>Ehrliche Beratung</li>
+            <li>Termintreue</li>
+            <li>Website gehört Ihnen</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-alt" id="faq">
+      <div class="container faq-wrap">
+        <div class="section-head left reveal">
+          <p class="kicker">FAQ</p>
+          <h2>Gut zu wissen.</h2>
+          <p>Ihre Frage ist nicht dabei? <a href="#kontakt">Schreiben Sie mir</a> – ich antworte innert 24 Stunden.</p>
+        </div>
+
+        <div class="faq reveal">
+          <details>
+            <summary>Wie lange dauert es, bis meine Website online ist?</summary>
+            <p>Ein Onepager ist meist innert 1–2 Wochen fertig, grössere Websites in 3–6 Wochen. Der genaue Zeitplan steht in Ihrer Offerte.</p>
+          </details>
+          <details>
+            <summary>Was muss ich selbst liefern?</summary>
+            <p>Idealerweise Texte, Logo und Bilder. Kein Problem, wenn noch nicht alles bereit ist: Ich helfe beim Strukturieren und kann auf Wunsch auch die Texte für Sie schreiben.</p>
+          </details>
+          <details>
+            <summary>Kann ich die Website später selbst bearbeiten?</summary>
+            <p>Ja, mit einem einfachen Redaktionssystem (CMS). Damit ändern Sie Texte und Bilder selbst – ganz ohne Programmierkenntnisse. Alternativ übernehme ich Änderungen gerne für Sie.</p>
+          </details>
+          <details>
+            <summary>Gehört die Website danach mir?</summary>
+            <p>Ja, vollständig. Sie erhalten alle Zugangsdaten und Dateien. Es gibt keine Abhängigkeit und keinen Abo-Zwang.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kontakt -->
+    <section class="section" id="kontakt">
+      <div class="container">
+        <div class="contact-card">
+          <div class="contact-copy reveal">
+            <p class="kicker">Kontakt</p>
+            <h2>Erzählen Sie mir von Ihrem <span class="hl">Projekt.</span></h2>
+            <p>Ich freue mich auf Ihre Nachricht und melde mich innert 24 Stunden – kostenlos und unverbindlich.</p>
+
+            <ul class="contact-list">
+              <li>
+                <span class="ci"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span>
+                <div><small>E-Mail</small><a href="mailto:ledion.jusufi09@hotmail.com">ledion.jusufi09@hotmail.com</a></div>
+              </li>
+              <li>
+                <span class="ci"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span>
+                <div><small>Telefon</small><a href="tel:+41000000000">+41 00 000 00 00</a></div>
+              </li>
+              <li>
+                <span class="ci"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+                <div><small>Region</small><span>Baden &amp; ganze Schweiz</span></div>
+              </li>
+            </ul>
+          </div>
+
+          <form class="contact-form reveal" id="contact-form" novalidate>
+            <div class="field-row">
+              <div class="field">
+                <label for="name">Name *</label>
+                <input id="name" name="name" type="text" autocomplete="name" required>
+              </div>
+              <div class="field">
+                <label for="email">E-Mail *</label>
+                <input id="email" name="email" type="email" autocomplete="email" required>
+              </div>
+            </div>
+            <div class="field">
+              <label for="company">Firma / Verein <span class="opt">(optional)</span></label>
+              <input id="company" name="company" type="text" autocomplete="organization">
+            </div>
+            <div class="field">
+              <label for="scope">Umfang</label>
+              <select id="scope" name="scope">
+                <option value="Noch unsicher">Noch unsicher – bitte beraten</option>
+                <option value="Onepager">Onepager (1 Seite)</option>
+                <option value="Kleine Website">Kleine Website (2–5 Seiten)</option>
+                <option value="Grössere Website">Grössere Website (6+ Seiten)</option>
+                <option value="Redesign">Redesign bestehender Website</option>
+                <option value="Wartung">Wartung &amp; Hosting</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="message">Ihre Nachricht *</label>
+              <textarea id="message" name="message" rows="5" required placeholder="Worum geht es? Haben Sie schon eine Website?"></textarea>
+            </div>
+            <label class="check">
+              <input type="checkbox" name="privacy" required>
+              <span>Ich bin einverstanden, dass meine Angaben zur Beantwortung meiner Anfrage verwendet werden. Mehr in der <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a>.</span>
+            </label>
+            <button type="submit" class="btn btn-primary btn-block">Nachricht senden
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-cta">
+        <p class="footer-big">Lassen Sie uns etwas <span>Krasses</span> bauen.</p>
+        <a href="#kontakt" class="btn btn-primary">Projekt anfragen
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="container footer-grid">
+      <div>
+        <a href="#top" class="logo">
+          <span class="logo-mark">LJ</span>
+          <span class="logo-text">Webdesign</span>
+        </a>
+        <p class="footer-claim">Websites von Hand programmiert – aus Baden.</p>
+      </div>
+      <nav aria-label="Footer">
+        <a href="#leistungen">Leistungen</a>
+        <a href="#preise">Preise</a>
+        <a href="#faq">FAQ</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+      <nav aria-label="Rechtliches">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </nav>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span id="year">2026</span> LJ Webdesign</p>
+      <p class="footer-code">&lt;made by hand in Baden /&gt;</p>
+      <a href="#top" class="to-top">Nach oben ↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
