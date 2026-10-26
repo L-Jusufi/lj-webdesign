@@ -504,6 +504,8 @@
       if (t < 1) requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
+    // Sicherheitsnetz: Endwert setzen, auch wenn der Browser Animationen pausiert
+    setTimeout(() => { node.textContent = format(target); }, 1500);
   };
 
   // Ladezeit und Grösse misst der Browser selbst (Performance-API)
