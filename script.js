@@ -1,7 +1,7 @@
 // LJ Digital – Interaktionen
 (function () {
   // E-Mail-Adresse, an die Anfragen aus dem Formular gehen
-  const CONTACT_EMAIL = "ledion.jusufi09@hotmail.com";
+  const CONTACT_EMAIL = "info@ljdigital.ch";
   const root = document.documentElement;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
