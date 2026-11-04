@@ -1,4 +1,4 @@
-// LJ Webdesign – Interaktionen
+// LJ Digital – Interaktionen
 (function () {
   // E-Mail-Adresse, an die Anfragen aus dem Formular gehen
   const CONTACT_EMAIL = "ledion.jusufi09@hotmail.com";
@@ -598,6 +598,10 @@
   });
   extras.forEach((box) => box.addEventListener("change", render));
   render();
+
+  // Leistungsseiten übergeben die gewünschte Leistung über die Adresse
+  const wanted = new URLSearchParams(location.search).get("leistung");
+  if (wanted && Array.from(scopeSelect.options).some((o) => o.value === wanted)) scopeSelect.value = wanted;
 
   // Links mit data-scope wählen den passenden Umfang im Formular vor
   document.querySelectorAll("[data-scope]").forEach((link) => {

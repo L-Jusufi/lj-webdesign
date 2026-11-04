@@ -235,6 +235,8 @@ p { margin: 0; }
 .service:hover .s-arrow { color: var(--accent); }
 .service:hover p { color: var(--ink-2); }
 .service:hover .s-arrow { transform: rotate(-45deg); }
+.service h3 a { color: inherit; }
+.service h3 a::after { content: ""; position: absolute; inset: 0; }
 
 /* Weitere Leistungen für Firmen */
 .biz-head { margin: 88px 0 28px; }
@@ -269,6 +271,30 @@ p { margin: 0; }
 .biz-timeline { position: absolute; left: 14px; right: 14px; bottom: 14px; display: grid; grid-template-columns: 3fr 2fr 4fr 2fr; gap: 4px; }
 .biz-timeline i { height: 14px; border-radius: 4px; background: var(--surface-2); }
 .biz-timeline i:first-child { background: var(--accent); }
+
+.biz-all { margin-top: 26px; text-align: center; }
+
+/* ---------- Leistungsseiten ---------- */
+.page-hero { padding: 72px 0 64px; border-bottom: 1px solid var(--line); }
+.page-hero h1 { max-width: 900px; font-size: clamp(42px, 6.2vw, 80px); letter-spacing: -0.04em; font-weight: 550; }
+.page-lead { max-width: 660px; margin-top: 24px; font-size: 19px; color: var(--muted); }
+.page-hero .hero-actions { margin-top: 30px; animation: none; }
+.page-section { padding: 88px 0; }
+.page-section h2 { font-size: clamp(30px, 3.8vw, 44px); }
+.page-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: 56px; align-items: start; }
+.page-list { list-style: none; margin: 28px 0 0; padding: 0; border-top: 1px solid var(--line); }
+.page-list li { display: flex; gap: 14px; padding: 17px 0; border-bottom: 1px solid var(--line); font-size: 17.5px; color: var(--ink-2); }
+.page-list li::before { content: "✓"; color: var(--accent); font: 700 15px/1.7 var(--mono); }
+.page-price { padding: 28px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); box-shadow: var(--edge); }
+.page-price-text { font-size: 24px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; }
+.page-price p:not(.kicker):not(.page-price-text) { margin: 12px 0 22px; color: var(--muted); font-size: 15.5px; }
+.page-steps { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin: 32px 0 0; padding: 0; }
+.page-steps li { padding: 26px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); }
+.page-steps span { font: 500 14px var(--mono); color: var(--accent); }
+.page-steps h3 { margin-top: 14px; font-size: 22px; font-weight: 550; }
+.page-steps p { margin-top: 8px; color: var(--muted); font-size: 15.5px; }
+.biz-card h3 { font-size: 21px; font-weight: 550; }
+.page-related { margin-top: 32px; }
 
 /* ---------- Spielwiese ---------- */
 .playground { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: 20px; align-items: stretch; }
@@ -742,6 +768,7 @@ p { margin: 0; }
   .s-arrow { display: none; }
   .biz-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .biz-feature { grid-template-columns: 1fr; }
+  .page-grid, .page-steps { grid-template-columns: 1fr; }
 
   .journey-line { left: 10px; right: auto; top: 10px; bottom: 10px; width: 2px; height: auto; }
   .journey-fill { transform-origin: top; transform: scaleY(var(--p)); }
@@ -783,6 +810,8 @@ p { margin: 0; }
   .extra { grid-template-columns: auto minmax(0, 1fr); margin-inline: -6px; padding: 10px 6px; }
   .extra small { grid-column: 2; margin-top: -8px; }
   .biz-head { margin-top: 64px; }
+  .page-hero { padding: 48px 0; }
+  .page-section { padding: 64px 0; }
   .biz-grid { grid-template-columns: 1fr; }
   .biz-card, .biz-feature { padding: 22px; }
   .about { gap: 40px; }
