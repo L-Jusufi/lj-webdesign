@@ -286,7 +286,9 @@
       "  kontakt        Direkt zum Kontaktformular\n" +
       "  clear          Terminal leeren", "dim"),
     leistungen: () => print(
-      "01  Webdesign\n02  Programmierung\n03  Mobil optimiert\n04  Bei Google gefunden\n05  Hosting &amp; Wartung\n06  Redesign"),
+      "01  Webdesign\n02  Programmierung\n03  Mobil optimiert\n04  Bei Google gefunden\n05  Hosting &amp; Wartung\n06  Redesign\n" +
+      "07  Werbevideos &amp; KI-Videos\n08  Logo &amp; Branding\n09  Social-Media-Inhalte\n10  Texte &amp; Übersetzungen\n" +
+      "11  Flyer &amp; Präsentationen\n12  Online-Buchung &amp; Shops\n13  KI-Chatbots &amp; Automatisierung"),
     preis: () => {
       print("Jede Website ist anders – darum gibt es den Preis persönlich.");
       print("Schreiben Sie mir kurz, was Sie brauchen: kostenlose Offerte innert 24 h.");
