@@ -130,6 +130,49 @@
     const wanted = new URLSearchParams(location.search).get("leistung");
     if (wanted && Array.from(scopeSelect.options).some((o) => o.value === wanted)) scopeSelect.value = wanted;
 
+    // Kleine Auswahlhilfe im Startbereich
+    const chatBody = document.getElementById("chat-body");
+    const chatReplies = document.getElementById("chat-replies");
+    const addBubble = (text, cls = "") => {
+      const bubble = document.createElement("p");
+      bubble.className = `bubble ${cls}`.trim();
+      bubble.textContent = text;
+      chatBody.appendChild(bubble);
+      return bubble;
+    };
+    chatReplies.querySelectorAll("a").forEach((choice) => {
+      choice.addEventListener("click", (e) => {
+        e.preventDefault();
+        const href = choice.getAttribute("href");
+        const scope = choice.dataset.scope;
+        const reply = choice.dataset.reply;
+        addBubble(choice.textContent, "bubble-me");
+        chatReplies.hidden = true;
+        const answer = () => {
+          addBubble(reply);
+          const next = document.createElement("div");
+          next.className = "chat-next";
+          const write = document.createElement("a");
+          write.className = "btn btn-primary btn-sm";
+          write.href = "#kontakt";
+          write.textContent = "Jetzt schreiben";
+          write.addEventListener("click", () => { scopeSelect.value = scope; });
+          next.appendChild(write);
+          if (href !== "#kontakt") {
+            const more = document.createElement("a");
+            more.className = "btn btn-ghost btn-sm";
+            more.href = href;
+            more.textContent = "Mehr dazu";
+            next.appendChild(more);
+          }
+          chatBody.appendChild(next);
+        };
+        if (reduceMotion) { answer(); return; }
+        const typing = addBubble("…", "bubble-typing");
+        setTimeout(() => { typing.remove(); answer(); }, 700);
+      });
+    });
+
     // Links mit data-scope wählen den passenden Umfang im Formular vor
     document.querySelectorAll("[data-scope]").forEach((link) => {
       link.addEventListener("click", () => { scopeSelect.value = link.dataset.scope; });

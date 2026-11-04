@@ -46,27 +46,45 @@
   <main id="main">
 
     <section class="home-hero">
-      <div class="container">
-        <p class="hello">Hoi, schön, dass Sie da sind!</p>
-        <h1>Ich helfe Ihrer Firma, online <span class="hl">neue Kunden</span> zu gewinnen.</h1>
-        <p class="home-lead">Mit einer Website, einem Werbevideo oder besserer Sichtbarkeit bei Google. Sie müssen nichts von Technik verstehen – erzählen Sie mir einfach, was Sie brauchen.</p>
-        <div class="hero-actions">
-          <a href="#kontakt" class="btn btn-primary">Schreiben Sie mir
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-          <a href="tel:+41766109982" class="btn btn-ghost">Anrufen: 076 610 99 82</a>
+      <div class="container hero-split">
+        <div class="hero-text">
+          <p class="hello">Hoi, schön, dass Sie da sind!</p>
+          <h1>Ihre Firma verdient es, <span class="scribble">gefunden</span> zu werden.</h1>
+          <p class="home-lead">Ich bin LJ aus der Region Baden. Sie erzählen mir, was Sie brauchen, und ich kümmere mich um Website, Video und Google. Ganz ohne Fachchinesisch.</p>
+          <div class="hero-actions">
+            <a href="#kontakt" class="btn btn-primary">Schreiben Sie mir
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="tel:+41766109982" class="btn btn-ghost">Anrufen: 076 610 99 82</a>
+          </div>
+          <ul class="trust-line">
+            <li>Antwort innert 24 Stunden</li>
+            <li>Kostenlos und unverbindlich</li>
+          </ul>
         </div>
-        <ul class="trust-line">
-          <li>Antwort innert 24 Stunden</li>
-          <li>Kostenlos und unverbindlich</li>
-          <li>Immer dieselbe Ansprechperson</li>
-        </ul>
+
+        <div class="chat" id="chat" aria-label="Kleine Auswahlhilfe">
+          <div class="chat-head">
+            <span class="chat-avatar" aria-hidden="true">LJ</span>
+            <div><strong>LJ</strong><small>Kleine Auswahlhilfe</small></div>
+          </div>
+          <div class="chat-body" id="chat-body" aria-live="polite">
+            <p class="bubble">Hoi! Womit kann ich Ihnen helfen?</p>
+          </div>
+          <div class="chat-replies" id="chat-replies">
+            <a href="webdesign-schweiz.html" data-scope="Kleine Website" data-reply="Schön! Eine gute Website muss nicht kompliziert sein. Haben Sie schon eine, oder starten wir neu?">Ich brauche eine Website</a>
+            <a href="seo-schweiz.html" data-scope="Google-Optimierung (SEO)" data-reply="Verstehe. Schauen wir zuerst, wie Ihre Firma heute bei Google erscheint. Wie heisst sie denn?">Ich will gefunden werden</a>
+            <a href="werbevideos-ki-videos.html" data-scope="Werbevideo" data-reply="Gerne! Ein kurzes Video kann Ihr Angebot schnell erklären. Haben Sie schon eine Idee?">Ich brauche ein Video</a>
+            <a href="#kontakt" data-scope="Noch unsicher" data-reply="Kein Problem, das geht vielen so. Erzählen Sie mir einfach kurz von Ihrer Firma.">Ich bin noch unsicher</a>
+          </div>
+          <p class="chat-note">Kein Live-Chat und kein Bot. Ihre Nachricht lese und beantworte ich persönlich.</p>
+        </div>
       </div>
     </section>
 
     <section class="section-compact" id="leistungen">
       <div class="container">
-        <h2>Womit kann ich Ihnen helfen?</h2>
+        <h2>Womit kann ich Ihnen <span class="scribble">helfen?</span></h2>
         <p class="section-lead">Wählen Sie, was am besten passt. Ein Klick genügt, und Sie sehen alle Infos dazu.</p>
         <div class="need-grid">
           <a class="need" href="webdesign-schweiz.html"><strong>Ich brauche eine Website</strong><span>Neu und individuell</span></a>
@@ -80,7 +98,7 @@
           <a class="need" href="online-buchung-shop.html"><strong>Kunden sollen online buchen oder kaufen</strong><span>Termine, Anmeldungen, Shop</span></a>
           <a class="need" href="hosting-wartung.html"><strong>Jemand soll meine Website betreuen</strong><span>Updates und Änderungen</span></a>
           <a class="need" href="ki-chatbot-automatisierung.html"><strong>Ich will Arbeit automatisieren</strong><span>KI-Chatbots und Abläufe</span></a>
-          <a class="need need-open" href="#kontakt"><strong>Ich bin noch unsicher</strong><span>Schreiben Sie mir einfach</span></a>
+          <a class="need need-open" href="#kontakt"><strong>Ich bin noch unsicher</strong><span>Schreiben Sie mir einfach, wir finden es heraus</span></a>
         </div>
       </div>
     </section>
@@ -90,9 +108,9 @@
         <h2>Noch unsicher? Das ist völlig normal.</h2>
         <p class="section-lead">Viele wissen am Anfang noch nicht genau, was sie brauchen. Genau dafür bin ich da.</p>
         <div class="reassure">
-          <div><h3>Noch keine genaue Idee?</h3><p>Wir finden gemeinsam heraus, was für Ihre Firma sinnvoll ist.</p></div>
-          <div><h3>Noch keine Texte oder Bilder?</h3><p>Kein Problem. Ich helfe Ihnen dabei und erkläre, was es braucht.</p></div>
-          <div><h3>Kleines Budget?</h3><p>Sagen Sie es mir einfach. Wir starten mit dem, was sich zuerst lohnt.</p></div>
+          <div class="note note-a"><h3>Noch keine genaue Idee?</h3><p>Wir finden gemeinsam heraus, was für Ihre Firma sinnvoll ist.</p></div>
+          <div class="note note-b"><h3>Noch keine Texte oder Bilder?</h3><p>Kein Problem. Ich helfe Ihnen dabei und erkläre, was es braucht.</p></div>
+          <div class="note note-c"><h3>Kleines Budget?</h3><p>Sagen Sie es mir einfach. Wir starten mit dem, was sich zuerst lohnt.</p></div>
         </div>
         <p class="reassure-cta"><a href="#kontakt" class="btn btn-primary">Unverbindlich nachfragen</a></p>
       </div>
@@ -100,10 +118,13 @@
 
     <section class="section-compact" id="ueber-mich">
       <div class="container about">
-        <div class="portrait">
-          <!-- Hier ein Foto einsetzen: <img src="ich.jpg" alt="Portrait von LJ"> -->
-          <span>LJ</span>
-        </div>
+        <figure class="polaroid">
+          <div class="portrait">
+            <!-- Hier ein Foto einsetzen: <img src="ich.jpg" alt="Portrait von LJ"> -->
+            <span>LJ</span>
+          </div>
+          <figcaption>Das bin ich!</figcaption>
+        </figure>
         <div class="about-copy">
           <h2>Hoi, ich bin LJ.</h2>
           <p>Ich komme aus der Region Baden und helfe KMU, Vereinen und Selbstständigen, online gefunden zu werden. Mir ist wichtig, dass Sie jederzeit verstehen, was passiert und warum.</p>
@@ -113,14 +134,15 @@
             <li>Klare Preise</li>
             <li>Website gehört Ihnen</li>
           </ul>
+          <p class="signoff" aria-hidden="true">Bis bald, LJ</p>
         </div>
       </div>
     </section>
 
     <section class="section-compact" id="ablauf">
       <div class="container">
-        <h2>So arbeiten wir zusammen</h2>
-        <ol class="page-steps">
+        <h2>So arbeiten wir <span class="scribble">zusammen</span></h2>
+        <ol class="page-steps hand-steps">
           <li><span>1</span><h3>Sie erzählen mir von Ihrer Idee</h3><p>Ein paar Sätze reichen. Es muss noch nichts fertig sein.</p></li>
           <li><span>2</span><h3>Sie erhalten einen klaren Vorschlag</h3><p>Mit Preis und Zeitplan, kostenlos und unverbindlich.</p></li>
           <li><span>3</span><h3>Ich setze es für Sie um</h3><p>Sie sehen Zwischenstände. Online geht es erst, wenn Sie zufrieden sind.</p></li>
@@ -249,6 +271,7 @@
       <div class="container">
         <div class="contact-card">
           <div class="contact-copy">
+            <p class="hello">Keine Sorge, ein paar Sätze reichen.</p>
             <h2>Ich freue mich, von Ihnen zu hören.</h2>
             <p>Erzählen Sie mir kurz von Ihrer Firma. Ich melde mich innert 24 Stunden persönlich bei Ihnen – kostenlos und unverbindlich.</p>
             <ul class="contact-list">
