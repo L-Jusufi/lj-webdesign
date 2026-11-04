@@ -200,7 +200,7 @@ p { margin: 0; }
 }
 .need:hover { border-color: var(--accent); background: var(--surface-2); color: var(--ink); }
 .need strong { display: block; font-size: 18px; font-weight: 600; line-height: 1.3; }
-.need strong::after { content: " a0→"; color: var(--accent); }
+.need strong::after { content: " →"; color: var(--accent); }
 .need span { display: block; margin-top: 5px; color: var(--muted); font-size: 15px; }
 .need-open { border-style: dashed; }
 .group-title { margin: 44px 0 16px; font-size: 24px !important; }
