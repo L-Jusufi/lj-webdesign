@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demo | LJ Digital</title>
+  <meta name="description" content="Terminal und Live-Editor zum Ausprobieren.">
+  <link rel="canonical" href="https://l-jusufi.github.io/lj-webdesign/demo.html">
+  <meta name="robots" content="noindex">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Demo">
+  <meta property="og:description" content="Terminal und Live-Editor zum Ausprobieren.">
+  <meta property="og:url" content="https://l-jusufi.github.io/lj-webdesign/demo.html">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230a0a0a'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='monospace' font-weight='700' font-size='26' fill='%23ff8f5e'%3ELJ%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;500;700&family=Caveat:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <header class="site-header" id="top">
+    <div class="container nav">
+      <a href="index.html" class="logo" aria-label="LJ Digital – zur Startseite">
+        <span class="logo-mark">LJ</span>
+        <span class="logo-text">Digital</span>
+      </a>
+
+      <nav class="nav-links" id="nav-links" aria-label="Hauptnavigation">
+        <a href="leistungen.html">Leistungen</a>
+        <a href="index.html#preise">Preise</a>
+        <a href="index.html#ueber-mich">Über mich</a>
+        <a href="index.html#kontakt" class="btn btn-primary btn-sm nav-cta">Offerte anfragen</a>
+      </nav>
+
+      <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="page-hero">
+      <div class="container">
+        <p class="kicker">Demo</p>
+        <h1>Zum Ausprobieren</h1>
+        <p class="page-lead">Ein Terminal und ein Live-Editor. Sie zeigen, was im Browser alles möglich ist.</p>
+      </div>
+    </section>
+
+    <section class="section-compact" id="spielwiese">
+      <div class="container">
+        <div class="playground">
+          <!-- Terminal -->
+          <div class="terminal reveal" id="terminal">
+            <div class="win-bar">
+              <span class="tl"></span><span class="tl"></span><span class="tl"></span>
+              <span class="win-title">lj@baden: ~</span>
+            </div>
+            <div class="term-out" id="term-out" role="log" aria-live="polite"></div>
+            <form class="term-line" id="term-form" autocomplete="off">
+              <label class="term-prompt" for="term-input">lj@baden:~$</label>
+              <input id="term-input" type="text" spellcheck="false" autocapitalize="off" placeholder="help">
+            </form>
+            <div class="term-chips" aria-label="Befehle zum Anklicken">
+              <button type="button" data-cmd="help">help</button>
+              <button type="button" data-cmd="leistungen">leistungen</button>
+              <button type="button" data-cmd="preis">preis</button>
+              <button type="button" data-cmd="farbe blau">farbe blau</button>
+              <button type="button" data-cmd="kontakt">kontakt</button>
+            </div>
+          </div>
+
+          <!-- Live-Editor -->
+          <div class="editor reveal" id="editor">
+            <div class="win-bar">
+              <span class="tl"></span><span class="tl"></span><span class="tl"></span>
+              <span class="win-title">style.css</span>
+              <span class="editor-hint" aria-hidden="true">Probier mich aus!</span>
+            </div>
+            <div class="editor-body">
+              <pre class="code" aria-label="CSS-Code der Vorschau"><code id="code"></code></pre>
+              <div class="preview" id="preview" aria-label="Vorschau einer Beispiel-Website">
+                <div class="pv-nav"><b>Café Linde</b><span><i>Menü</i><i>Kontakt</i></span></div>
+                <div class="pv-img"></div>
+                <h4>Frisch geröstet.<br>Mit Liebe serviert.</h4>
+                <p>Hausgemachte Kuchen und feiner Kaffee in Baden.</p>
+                <span class="pv-btn">Tisch reservieren</span>
+              </div>
+            </div>
+            <div class="editor-controls">
+              <div class="ctrl">
+                <span class="ctrl-label" id="lbl-color">Farbe</span>
+                <div class="swatches" role="group" aria-labelledby="lbl-color">
+                  <button type="button" data-color="#e8552a" style="--c:#e8552a" aria-label="Orange" aria-pressed="true"></button>
+                  <button type="button" data-color="#2f6f5e" style="--c:#2f6f5e" aria-label="Tannengrün" aria-pressed="false"></button>
+                  <button type="button" data-color="#2d5bd7" style="--c:#2d5bd7" aria-label="Blau" aria-pressed="false"></button>
+                  <button type="button" data-color="#b8336a" style="--c:#b8336a" aria-label="Beere" aria-pressed="false"></button>
+                  <button type="button" data-color="#1b1a17" style="--c:#1b1a17" aria-label="Schwarz" aria-pressed="false"></button>
+                </div>
+              </div>
+              <div class="ctrl">
+                <label class="ctrl-label" for="radius">Ecken</label>
+                <input type="range" id="radius" min="0" max="28" value="14">
+              </div>
+              <div class="ctrl">
+                <span class="ctrl-label" id="lbl-font">Schrift</span>
+                <div class="seg" role="group" aria-labelledby="lbl-font">
+                  <button type="button" data-font="sans" aria-pressed="true">Modern</button>
+                  <button type="button" data-font="serif" aria-pressed="false">Klassisch</button>
+                  <button type="button" data-font="mono" aria-pressed="false">Technisch</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="stats">
+          <div class="stat stat-live">
+            <span class="stat-label"><span class="dot"></span>Ladezeit bei Ihnen</span>
+            <strong data-stat="load">–</strong>
+            <small>gerade live gemessen</small>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Grösse dieser Seite</span>
+            <strong data-stat="weight">–</strong>
+            <small>HTML, CSS und JavaScript</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-cta">
+        <p class="footer-big">Bereit für den nächsten Schritt?</p>
+        <a href="index.html#kontakt" class="btn btn-primary">Offerte anfragen
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="container footer-grid">
+      <div>
+        <a href="index.html" class="logo">
+          <span class="logo-mark">LJ</span>
+          <span class="logo-text">Digital</span>
+        </a>
+        <p class="footer-claim">Websites, Videos und Werbung für Firmen in der ganzen Schweiz.</p>
+      </div>
+      <nav aria-label="Footer">
+        <a href="leistungen.html">Leistungen</a>
+        <a href="index.html#preise">Preise</a>
+        <a href="index.html#ueber-mich">Über mich</a>
+        <a href="index.html#kontakt">Kontakt</a>
+        <a href="demo.html">Demo</a>
+      </nav>
+      <nav aria-label="Rechtliches">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </nav>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span id="year">2026</span> LJ Digital</p>
+      <p class="footer-code">Aus Baden, für die ganze Schweiz</p>
+      <a href="#top" class="to-top">Nach oben ↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
