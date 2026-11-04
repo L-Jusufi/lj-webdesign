@@ -181,6 +181,16 @@ p { margin: 0; }
 .trust-line { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; margin: 26px 0 0; padding: 0; list-style: none; color: var(--ink-2); font-size: 15px; }
 .trust-line li::before { content: "✓ "; color: var(--accent); font-weight: 700; }
 
+.hello { margin-bottom: 14px; font-family: var(--hand); font-size: clamp(28px, 3vw, 36px); line-height: 1.1; color: var(--accent); }
+.home-hero .btn-ghost { font-variant-numeric: tabular-nums; }
+
+/* Abschnitt für unsichere Neukunden */
+.reassure { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 32px; }
+.reassure > div { padding: 26px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); }
+.reassure h3 { font-size: 21px; font-weight: 550; }
+.reassure p { margin-top: 8px; color: var(--muted); }
+.reassure-cta { margin-top: 28px; text-align: center; }
+
 /* «Was brauchen Sie?» */
 .need-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 32px; }
 .need {
@@ -190,7 +200,7 @@ p { margin: 0; }
 }
 .need:hover { border-color: var(--accent); background: var(--surface-2); color: var(--ink); }
 .need strong { display: block; font-size: 18px; font-weight: 600; line-height: 1.3; }
-.need strong::after { content: " →"; color: var(--accent); }
+.need strong::after { content: ".need strong::after { content: " →"0a0→"; color: var(--accent); }
 .need span { display: block; margin-top: 5px; color: var(--muted); font-size: 15px; }
 .need-open { border-style: dashed; }
 .group-title { margin: 44px 0 16px; font-size: 24px !important; }
@@ -645,6 +655,7 @@ p { margin: 0; }
   .nav-cta { margin-top: 16px; padding: 16px 20px; font-size: 16px; }
 
   .biz-grid, .need-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .reassure { grid-template-columns: 1fr; }
   .page-grid, .page-steps { grid-template-columns: 1fr; }
 
 }
