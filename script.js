@@ -26,10 +26,25 @@
   onScroll();
 
   // ---------- Mobile Navigation ----------
+  // Leistungs-Menü: öffnet sich beim Darüberfahren, auf dem Handy über den Pfeil
+  const mega = document.querySelector(".has-mega");
+  const megaToggle = mega && mega.querySelector(".mega-toggle");
+  const setMega = (open) => {
+    if (!mega) return;
+    mega.classList.toggle("open", open);
+    megaToggle.setAttribute("aria-expanded", String(open));
+  };
+  if (mega) {
+    megaToggle.addEventListener("click", () => setMega(!mega.classList.contains("open")));
+    document.addEventListener("click", (e) => { if (!mega.contains(e.target)) setMega(false); });
+  }
+
   const closeNav = () => {
     navLinks.classList.remove("open");
     toggle.setAttribute("aria-expanded", "false");
     toggle.setAttribute("aria-label", "Menü öffnen");
+    setMega(false);
+    if (mega && mega.contains(document.activeElement)) document.activeElement.blur();
   };
   toggle.addEventListener("click", () => {
     const open = navLinks.classList.toggle("open");
@@ -271,7 +286,9 @@
       leistungen: () => print(
         "01  Webdesign\n02  Programmierung\n03  Mobil optimiert\n04  Bei Google gefunden\n05  Hosting &amp; Wartung\n06  Redesign\n" +
         "07  Werbevideos &amp; KI-Videos\n08  Logo &amp; Branding\n09  Social-Media-Inhalte\n10  Texte &amp; Übersetzungen\n" +
-        "11  Flyer &amp; Präsentationen\n12  Online-Buchung &amp; Shops\n13  KI-Chatbots &amp; Automatisierung"),
+        "11  Flyer &amp; Präsentationen\n12  Online-Buchung &amp; Shops\n13  KI-Chatbots &amp; Automatisierung\n" +
+        "14  Google Maps und Google-Profil\n15  Domain und Firmen-E-Mail\n16  Eigene App\n17  Speisekarte mit QR-Code\n" +
+        "18  Newsletter\n19  Website-Check\n20  Website für alle"),
       preis: () => {
         print("Jede Website ist anders – darum gibt es den Preis persönlich.");
         print("Schreiben Sie mir kurz, was Sie brauchen: kostenlose Offerte innert 24 h.");
