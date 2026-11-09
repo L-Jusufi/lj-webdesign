@@ -12,11 +12,14 @@
   // ---------- Scrollen: Header-Linie und Fortschrittsbalken ----------
   let ticking = false;
 
+  let updateQuickbar = () => {};
+
   const onScroll = () => {
     const y = window.scrollY;
     const max = root.scrollHeight - window.innerHeight;
     header.classList.toggle("scrolled", y > 8);
     root.style.setProperty("--progress", max > 0 ? (y / max).toFixed(4) : "0");
+    updateQuickbar();
     ticking = false;
   };
   window.addEventListener("scroll", () => {
@@ -50,11 +53,85 @@
     const open = navLinks.classList.toggle("open");
     toggle.setAttribute("aria-expanded", String(open));
     toggle.setAttribute("aria-label", open ? "Menü schliessen" : "Menü öffnen");
+    updateQuickbar();
   });
   navLinks.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeNav));
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeNav(); });
 
+  // ---------- Begrüssung passend zur Tageszeit ----------
+  const greet = document.querySelector("[data-greet]");
+  if (greet) {
+    const hour = new Date().getHours();
+    const hello = hour >= 5 && hour < 11 ? "Guten Morgen" : hour >= 17 && hour < 23 ? "Guten Abend" : "Hoi";
+    greet.textContent = `${hello}, schön, dass Sie da sind!`;
+  }
+
+  // ---------- Handy: Leiste mit «Anrufen» und «Schreiben» ----------
+  const quickbar = document.createElement("div");
+  quickbar.className = "quickbar";
+  quickbar.innerHTML =
+    '<a href="tel:+41766109982" class="btn btn-ghost"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>Anrufen</a>' +
+    `<a href="${document.getElementById("kontakt") ? "" : "index.html"}#kontakt" class="btn btn-primary">Schreiben<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>`;
+  document.body.appendChild(quickbar);
+  // Beim Kontaktformular und im Fuss der Seite ist die Leiste überflüssig
+  const quietZones = new Set();
+  updateQuickbar = () => {
+    quickbar.classList.toggle("show", window.scrollY > 420 && quietZones.size === 0 && !navLinks.classList.contains("open"));
+  };
+  if ("IntersectionObserver" in window) {
+    const zoneWatcher = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) quietZones.add(entry.target);
+        else quietZones.delete(entry.target);
+      });
+      updateQuickbar();
+    });
+    document.querySelectorAll("#kontakt, .site-footer").forEach((zone) => zoneWatcher.observe(zone));
+  }
+
+  // ---------- Karten: Licht folgt dem Mauszeiger ----------
+  if (window.matchMedia("(hover: hover)").matches) {
+    const SPOT = ".need, .biz-card, .page-price, .rate, .included, .page-steps:not(.hand-steps) li";
+    document.addEventListener("pointermove", (e) => {
+      const card = e.target.closest ? e.target.closest(SPOT) : null;
+      if (!card) return;
+      const box = card.getBoundingClientRect();
+      card.style.setProperty("--mx", `${e.clientX - box.left}px`);
+      card.style.setProperty("--my", `${e.clientY - box.top}px`);
+    }, { passive: true });
+  }
+
+  // ---------- Startseite: Leistungen nach Thema zeigen ----------
+  const needFilter = document.querySelector(".need-filter");
+  if (needFilter) {
+    const needGrid = document.querySelector(".need-grid");
+    const needs = needGrid.querySelectorAll(".need");
+    const showNeeds = (key) => {
+      needs.forEach((need) => {
+        const cats = (need.dataset.cat || "").split(" ");
+        need.hidden = !(key === "all" || cats.includes(key) || cats.includes("always"));
+      });
+      needFilter.querySelectorAll("button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.filter === key)));
+    };
+    needFilter.hidden = false;
+    showNeeds("top");
+    needFilter.addEventListener("click", (e) => {
+      const btn = e.target.closest("button[data-filter]");
+      if (!btn) return;
+      showNeeds(btn.dataset.filter);
+      // Karten kurz neu einblenden
+      needGrid.classList.remove("swap");
+      void needGrid.offsetWidth;
+      needGrid.classList.add("swap");
+    });
+  }
+
   // ---------- Elemente beim Scrollen einblenden ----------
+  // Auf der Startseite bekommen die grossen Blöcke das Einblenden automatisch
+  document.querySelectorAll(
+    ".section-compact:not(.home-hero) h2:not(.reveal), .section-lead, .need-filter, .need-grid, .reassure, .about, .hand-steps, .rates, .contact-card, .bundle"
+  ).forEach((el) => el.classList.add("reveal"));
+
   const revealEls = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {
     const io = new IntersectionObserver((entries) => {
@@ -62,9 +139,11 @@
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
           io.unobserve(entry.target);
+          // Verzögerung danach entfernen, damit Hover-Effekte sofort reagieren
+          setTimeout(() => { entry.target.style.transitionDelay = ""; }, 1100);
         }
       });
-    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    }, { threshold: 0.08, rootMargin: "0px 0px -40px 0px" });
 
     // Geschwister leicht versetzt einblenden
     revealEls.forEach((el) => {

@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;500;700&family=Caveat:wght@500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20261109">
 </head>
 <body>
 
@@ -98,7 +98,8 @@
     <section class="home-hero">
       <div class="container hero-split">
         <div class="hero-text">
-          <p class="hello">Hoi, schön, dass Sie da sind!</p>
+          <p class="status"><span class="dot" aria-hidden="true"></span>Aktuell frei für neue Projekte</p>
+          <p class="hello" data-greet>Hoi, schön, dass Sie da sind!</p>
           <h1>Ihre Firma verdient es, <span class="scribble">gefunden</span> zu werden.</h1>
           <p class="home-lead">Ich bin LJ aus der Region Baden. Sie erzählen mir, was Sie brauchen, und ich kümmere mich um Website, Video und Google. Ganz ohne Fachchinesisch.</p>
           <div class="hero-actions">
@@ -132,30 +133,42 @@
       </div>
     </section>
 
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track"><span>Antwort innert 24 Stunden<i>✦</i>Kein Fachchinesisch<i>✦</i>Klare Preise<i>✦</i>Ihre Website gehört Ihnen<i>✦</i>Persönlich aus Baden<i>✦</i>Für die ganze Schweiz<i>✦</i></span><span>Antwort innert 24 Stunden<i>✦</i>Kein Fachchinesisch<i>✦</i>Klare Preise<i>✦</i>Ihre Website gehört Ihnen<i>✦</i>Persönlich aus Baden<i>✦</i>Für die ganze Schweiz<i>✦</i></span></div>
+    </div>
+
     <section class="section-compact" id="leistungen">
       <div class="container">
         <h2>Womit kann ich Ihnen <span class="scribble">helfen?</span></h2>
         <p class="section-lead">Wählen Sie, was am besten passt. Ein Klick genügt, und Sie sehen alle Infos dazu.</p>
+        <div class="need-filter" role="group" aria-label="Nach Thema auswählen" hidden>
+          <button type="button" data-filter="top" aria-pressed="true">Am häufigsten</button>
+          <button type="button" data-filter="website" aria-pressed="false">Website</button>
+          <button type="button" data-filter="google" aria-pressed="false">Gefunden werden</button>
+          <button type="button" data-filter="design" aria-pressed="false">Design und Texte</button>
+          <button type="button" data-filter="ki" aria-pressed="false">Apps und KI</button>
+          <button type="button" data-filter="all" aria-pressed="false">Alles zeigen</button>
+        </div>
         <div class="need-grid">
-          <a class="need" href="webdesign-schweiz.html"><strong>Ich brauche eine Website</strong><span>Neu und individuell</span></a>
-          <a class="need" href="redesign-website.html"><strong>Meine Website ist veraltet</strong><span>Modernisieren statt neu anfangen</span></a>
-          <a class="need" href="seo-schweiz.html"><strong>Ich will bei Google gefunden werden</strong><span>Technik, Inhalte und Profil</span></a>
-          <a class="need" href="werbevideos-ki-videos.html"><strong>Ich brauche ein Werbevideo</strong><span>Für Social Media und Website</span></a>
-          <a class="need" href="logo-branding.html"><strong>Ich brauche ein Logo</strong><span>Einheitlicher Firmenauftritt</span></a>
-          <a class="need" href="social-media-inhalte.html"><strong>Ich brauche Social-Media-Inhalte</strong><span>Beiträge, Texte und Grafiken</span></a>
-          <a class="need" href="texte-uebersetzungen.html"><strong>Ich brauche Texte</strong><span>Auch Übersetzungen</span></a>
-          <a class="need" href="flyer-praesentationen.html"><strong>Ich brauche Flyer oder Präsentationen</strong><span>Fertig zum Drucken oder Zeigen</span></a>
-          <a class="need" href="online-buchung-shop.html"><strong>Kunden sollen online buchen oder kaufen</strong><span>Termine, Anmeldungen, Shop</span></a>
-          <a class="need" href="hosting-wartung.html"><strong>Jemand soll meine Website betreuen</strong><span>Updates und Änderungen</span></a>
-          <a class="need" href="ki-chatbot-automatisierung.html"><strong>Ich will Arbeit automatisieren</strong><span>KI-Chatbots und Abläufe</span></a>
-          <a class="need" href="google-unternehmensprofil.html"><strong>Ich will auf Google Maps erscheinen</strong><span>Profil, Fotos und Öffnungszeiten</span></a>
-          <a class="need" href="web-apps.html"><strong>Ich brauche eine eigene App</strong><span>Fürs Handy, auch im App Store</span></a>
-          <a class="need" href="domain-email.html"><strong>Ich brauche eine Firmen-E-Mail</strong><span>Zum Beispiel info@ihrefirma.ch</span></a>
-          <a class="need" href="ki-telefonassistent.html"><strong>Ich verpasse zu viele Anrufe</strong><span>KI-Telefonassistent</span></a>
-          <a class="need" href="google-bewertungen.html"><strong>Ich will mehr Google-Bewertungen</strong><span>Echte Bewertungen, einfach gesammelt</span></a>
-          <a class="need" href="karriereseite.html"><strong>Ich suche Mitarbeitende</strong><span>Karriereseite und Inserate</span></a>
-          <a class="need" href="google-ads.html"><strong>Ich will Werbung auf Google</strong><span>Anzeigen mit klarem Budget</span></a>
-          <a class="need need-open" href="#kontakt"><strong>Ich bin noch unsicher</strong><span>Schreiben Sie mir einfach, wir finden es heraus</span></a>
+          <a class="need" data-cat="website top" href="webdesign-schweiz.html"><strong>Ich brauche eine Website</strong><span>Neu und individuell</span></a>
+          <a class="need" data-cat="website top" href="redesign-website.html"><strong>Meine Website ist veraltet</strong><span>Modernisieren statt neu anfangen</span></a>
+          <a class="need" data-cat="google top" href="seo-schweiz.html"><strong>Ich will bei Google gefunden werden</strong><span>Technik, Inhalte und Profil</span></a>
+          <a class="need" data-cat="google top" href="werbevideos-ki-videos.html"><strong>Ich brauche ein Werbevideo</strong><span>Für Social Media und Website</span></a>
+          <a class="need" data-cat="design top" href="logo-branding.html"><strong>Ich brauche ein Logo</strong><span>Einheitlicher Firmenauftritt</span></a>
+          <a class="need" data-cat="google" href="social-media-inhalte.html"><strong>Ich brauche Social-Media-Inhalte</strong><span>Beiträge, Texte und Grafiken</span></a>
+          <a class="need" data-cat="design" href="texte-uebersetzungen.html"><strong>Ich brauche Texte</strong><span>Auch Übersetzungen</span></a>
+          <a class="need" data-cat="design" href="flyer-praesentationen.html"><strong>Ich brauche Flyer oder Präsentationen</strong><span>Fertig zum Drucken oder Zeigen</span></a>
+          <a class="need" data-cat="website" href="online-buchung-shop.html"><strong>Kunden sollen online buchen oder kaufen</strong><span>Termine, Anmeldungen, Shop</span></a>
+          <a class="need" data-cat="website top" href="hosting-wartung.html"><strong>Jemand soll meine Website betreuen</strong><span>Updates und Änderungen</span></a>
+          <a class="need" data-cat="ki" href="ki-chatbot-automatisierung.html"><strong>Ich will Arbeit automatisieren</strong><span>KI-Chatbots und Abläufe</span></a>
+          <a class="need" data-cat="google top" href="google-unternehmensprofil.html"><strong>Ich will auf Google Maps erscheinen</strong><span>Profil, Fotos und Öffnungszeiten</span></a>
+          <a class="need" data-cat="ki top" href="web-apps.html"><strong>Ich brauche eine eigene App</strong><span>Fürs Handy, auch im App Store</span></a>
+          <a class="need" data-cat="website" href="domain-email.html"><strong>Ich brauche eine Firmen-E-Mail</strong><span>Zum Beispiel info@ihrefirma.ch</span></a>
+          <a class="need" data-cat="ki" href="ki-telefonassistent.html"><strong>Ich verpasse zu viele Anrufe</strong><span>KI-Telefonassistent</span></a>
+          <a class="need" data-cat="google" href="google-bewertungen.html"><strong>Ich will mehr Google-Bewertungen</strong><span>Echte Bewertungen, einfach gesammelt</span></a>
+          <a class="need" data-cat="design" href="karriereseite.html"><strong>Ich suche Mitarbeitende</strong><span>Karriereseite und Inserate</span></a>
+          <a class="need" data-cat="google" href="google-ads.html"><strong>Ich will Werbung auf Google</strong><span>Anzeigen mit klarem Budget</span></a>
+          <a class="need need-open" data-cat="always" href="#kontakt"><strong>Ich bin noch unsicher</strong><span>Schreiben Sie mir einfach, wir finden es heraus</span></a>
         </div>
       </div>
     </section>
@@ -209,8 +222,8 @@
 
     <section class="section-compact section-alt" id="preise">
       <div class="container">
-        <h2>Preise</h2>
-        <p class="section-lead">Keine Pakete, keine versteckten Kosten. Vor dem Start erhalten Sie immer eine verbindliche Offerte.</p>
+        <h2>Was kostet <span class="scribble">das?</span></h2>
+        <p class="section-lead">Klare Preise, keine versteckten Kosten. Vor dem Start erhalten Sie immer eine verbindliche Offerte.</p>
         <div class="pricing">
           <div class="rates">
             <article class="rate">
@@ -417,7 +430,7 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-cta">
-        <p class="footer-big">Haben Sie eine Frage? Schreiben Sie mir einfach.</p>
+        <p class="footer-big">Haben Sie eine Frage? <span>Schreiben Sie mir einfach.</span></p>
         <a href="index.html#kontakt" class="btn btn-primary">Kontakt aufnehmen
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
@@ -450,6 +463,6 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=20261109"></script>
 </body>
 </html>
