@@ -99,6 +99,22 @@
       card.style.setProperty("--mx", `${e.clientX - box.left}px`);
       card.style.setProperty("--my", `${e.clientY - box.top}px`);
     }, { passive: true });
+
+    // Karten kippen leicht in 3D, je nachdem wo die Maus steht
+    if (!reduceMotion) {
+      document.querySelectorAll(".need, a.biz-card").forEach((card) => {
+        card.classList.add("tilt");
+        card.addEventListener("pointermove", (e) => {
+          const box = card.getBoundingClientRect();
+          const x = (e.clientX - box.left) / box.width - 0.5;
+          const y = (e.clientY - box.top) / box.height - 0.5;
+          card.style.setProperty("--rx", `${(-y * 7).toFixed(2)}deg`);
+          card.style.setProperty("--ry", `${(x * 9).toFixed(2)}deg`);
+          card.classList.add("tilting");
+        });
+        card.addEventListener("pointerleave", () => card.classList.remove("tilting"));
+      });
+    }
   }
 
   // ---------- Startseite: Leistungen nach Thema zeigen ----------
@@ -368,7 +384,7 @@
         "11  Flyer &amp; Präsentationen\n12  Online-Buchung &amp; Shops\n13  KI-Chatbots &amp; Automatisierung\n" +
         "14  Google Maps und Google-Profil\n15  Domain und Firmen-E-Mail\n16  Eigene App\n17  Speisekarte mit QR-Code\n" +
         "18  Newsletter\n19  Website-Check\n20  Website für alle\n21  KI-Telefonassistent\n22  Google-Bewertungen\n" +
-        "23  Werbung auf Google\n24  Datenschutz auf der Website\n25  Karriereseite\n26  Online-Anfrage mit Fotos\n27  KI-Workshop"),
+        "23  Werbung auf Google\n24  Datenschutz auf der Website\n25  Karriereseite\n26  Online-Anfrage mit Fotos\n27  KI-Workshop\n28  3D auf der Website"),
       preis: () => {
         print("Jede Website ist anders – darum gibt es den Preis persönlich.");
         print("Schreiben Sie mir kurz, was Sie brauchen: kostenlose Offerte innert 24 h.");
