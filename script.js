@@ -66,6 +66,47 @@
     greet.textContent = `${hello}, schön, dass Sie da sind!`;
   }
 
+  // ---------- Einstieg: wechselndes Wort ----------
+  const rotator = document.querySelector(".rotator[data-words]");
+  if (rotator && !reduceMotion) {
+    const words = rotator.dataset.words.split(",");
+    let i = 0;
+    setInterval(() => {
+      if (document.hidden) return;
+      rotator.classList.remove("in");
+      rotator.classList.add("out");
+      setTimeout(() => {
+        i = (i + 1) % words.length;
+        rotator.textContent = words[i];
+        rotator.classList.remove("out");
+        rotator.classList.add("in");
+      }, 320);
+    }, 2600);
+  }
+
+  // ---------- Einstieg: Licht folgt der Maus, Knöpfe ziehen leicht an ----------
+  const hero = document.querySelector(".home-hero");
+  if (hero && !reduceMotion && window.matchMedia("(hover: hover)").matches) {
+    hero.addEventListener("pointermove", (e) => {
+      const box = hero.getBoundingClientRect();
+      hero.style.setProperty("--gx", `${e.clientX - box.left}px`);
+      hero.style.setProperty("--gy", `${e.clientY - box.top}px`);
+      hero.classList.add("glowing");
+    });
+    hero.addEventListener("pointerleave", () => hero.classList.remove("glowing"));
+  }
+  if (!reduceMotion && window.matchMedia("(hover: hover)").matches) {
+    document.querySelectorAll(".magnetic, .footer-cta .btn-primary").forEach((btn) => {
+      btn.addEventListener("pointermove", (e) => {
+        const box = btn.getBoundingClientRect();
+        const x = e.clientX - (box.left + box.width / 2);
+        const y = e.clientY - (box.top + box.height / 2);
+        btn.style.transform = `translate(${(x * 0.22).toFixed(1)}px, ${(y * 0.32).toFixed(1)}px)`;
+      });
+      btn.addEventListener("pointerleave", () => { btn.style.transform = ""; });
+    });
+  }
+
   // ---------- Handy: Leiste mit «Anrufen» und «Schreiben» ----------
   const quickbar = document.createElement("div");
   quickbar.className = "quickbar";

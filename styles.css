@@ -913,6 +913,63 @@ a.biz-card:hover h3::after, a.biz-card:hover h4::after { opacity: 1; transform: 
   .need-filter::-webkit-scrollbar { display: none; }
 }
 
+/* ---------- Einstieg: wechselndes Wort, Licht unter der Maus ---------- */
+.rotator { display: inline-block; white-space: nowrap; color: var(--accent); }
+.rotator.out { animation: wordOut .32s var(--ease) forwards; }
+.rotator.in { animation: wordIn .45s var(--ease) both; }
+@keyframes wordOut { to { opacity: 0; transform: translateY(-0.35em); filter: blur(4px); } }
+@keyframes wordIn { from { opacity: 0; transform: translateY(0.35em); filter: blur(4px); } }
+.home-hero .rotator.scribble { animation-name: none; background-size: 100% .22em; }
+.home-hero .rotator.scribble.out { animation-name: wordOut; }
+.home-hero .rotator.scribble.in { animation-name: wordIn; }
+
+.hero-glow {
+  position: absolute; z-index: -1; pointer-events: none;
+  left: var(--gx, 70%); top: var(--gy, 30%); width: 560px; height: 560px; margin: -280px 0 0 -280px; border-radius: 50%;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 22%, transparent), transparent);
+  opacity: 0; transition: opacity .6s;
+}
+.home-hero.glowing .hero-glow { opacity: 1; }
+
+.magnetic { will-change: transform; }
+
+/* ---------- Projekte ---------- */
+.projects .kicker { color: var(--accent); }
+.proj-list { display: grid; gap: 72px; margin-top: 48px; }
+.proj { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: 56px; align-items: center; }
+.proj-flip .proj-shot { order: 2; }
+.proj-shot { display: block; perspective: 1600px; color: inherit; }
+.browser {
+  border-radius: 16px; overflow: hidden; background: #1c1c1c; border: 1px solid var(--line-2);
+  box-shadow: 0 50px 90px -40px rgba(0, 0, 0, .9), 0 0 0 1px rgba(255, 255, 255, .03);
+  transform: rotateY(-11deg) rotateX(5deg) translateZ(0);
+  transition: transform .7s var(--ease), box-shadow .7s var(--ease);
+}
+.proj-flip .browser { transform: rotateY(11deg) rotateX(5deg); }
+.proj-shot:hover .browser, .proj-shot:focus-visible .browser { transform: none; box-shadow: 0 40px 90px -30px color-mix(in srgb, var(--accent) 45%, transparent); }
+.browser-bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: #232323; border-bottom: 1px solid var(--line-2); }
+.browser-bar i { width: 10px; height: 10px; border-radius: 50%; background: var(--line-2); }
+.browser-bar i:nth-child(1) { background: #ff5f57; }
+.browser-bar i:nth-child(2) { background: #febc2e; }
+.browser-bar i:nth-child(3) { background: #28c840; }
+.browser-bar span { margin-left: 12px; padding: 3px 12px; border-radius: 6px; background: #161616; font: 500 12px var(--mono); color: var(--muted); }
+.browser img { display: block; width: 100%; height: auto; }
+.proj-meta { font: 500 13px var(--mono); color: var(--muted); }
+.proj-copy h3 { margin-top: 10px; font-size: clamp(30px, 3.4vw, 42px); font-weight: 650; }
+.proj-copy > p:not(.proj-meta):not(.proj-soon) { margin-top: 14px; color: var(--muted); font-size: 17px; }
+.proj-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 0; padding: 0; list-style: none; }
+.proj-tags li { padding: 7px 12px; border-radius: 999px; background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent); color: var(--ink-2); font-size: 14px; }
+.proj-link { display: inline-flex; margin-top: 24px; font-weight: 600; color: var(--accent); }
+.proj-link:hover { color: var(--ink); }
+.proj-soon { display: inline-block; margin-top: 24px; font-family: var(--hand); font-size: 26px; color: var(--accent); transform: rotate(-2deg); }
+
+@media (max-width: 860px) {
+  .proj, .proj-flip { grid-template-columns: 1fr; gap: 26px; }
+  .proj-flip .proj-shot { order: 0; }
+  .browser, .proj-flip .browser { transform: none; }
+  .proj-list { gap: 56px; }
+}
+
 /* ---------- Einblenden beim Scrollen ---------- */
 .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
 .reveal.visible { opacity: 1; transform: none; }
@@ -1009,6 +1066,8 @@ a.biz-card:hover h3::after, a.biz-card:hover h4::after { opacity: 1; transform: 
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal, .preview > * { opacity: 1; transform: none; }
   .home-hero .scribble { background-size: 100% .22em; }
+  .browser, .proj-flip .browser { transform: none; }
+  .hero-glow { display: none; }
   .ticker-track { width: auto; }
   .ticker-track span { flex-wrap: wrap; justify-content: center; gap: 6px 24px; padding-inline: 16px; }
   .ticker-track span + span { display: none; }
