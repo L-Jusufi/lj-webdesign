@@ -1129,3 +1129,56 @@ a.biz-card:hover h3::after, a.biz-card:hover h4::after { opacity: 1; transform: 
   .ticker-track span { flex-wrap: wrap; justify-content: center; gap: 6px 24px; padding-inline: 16px; }
   .ticker-track span + span { display: none; }
 }
+
+/* ---------- Ratgeber und Projekt-Seiten ---------- */
+.article-meta { margin-top: 18px; font: 500 13px var(--mono); color: var(--muted); }
+.article { max-width: 780px; }
+.article-wide { max-width: 1080px; }
+.article > h2 { margin: 52px 0 0; font-size: clamp(24px, 3vw, 32px); letter-spacing: -0.03em; }
+.article > p { margin-top: 14px; font-size: 17.5px; line-height: 1.7; color: var(--ink-2); }
+.article > p a, .article-small a, .article-box a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.article .page-list { margin-top: 18px; }
+.article .page-list li { line-height: 1.6; }
+.article-box { margin-top: 8px; padding: 26px 28px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); box-shadow: var(--edge); }
+.article-box h2 { font-size: 20px; }
+.article-box ul { margin: 12px 0 0; padding-left: 20px; display: grid; gap: 8px; color: var(--ink-2); line-height: 1.6; }
+.article-small { margin-top: 14px; font-size: 13.5px !important; color: var(--muted) !important; }
+.table-wrap { margin-top: 20px; overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); }
+.table-wrap table { width: 100%; min-width: 560px; border-collapse: collapse; font-size: 15px; }
+.table-wrap th, .table-wrap td { padding: 14px 16px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+.table-wrap th { font: 500 12.5px var(--mono); color: var(--muted); background: var(--surface); }
+.table-wrap tr:last-child td { border-bottom: 0; }
+.article-steps { margin: 18px 0 0; padding-left: 22px; display: grid; gap: 12px; font-size: 17px; line-height: 1.6; color: var(--ink-2); }
+.article-steps li::marker { font: 700 15px var(--mono); color: var(--accent); }
+.article-prices { margin-top: 18px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.article-prices a { padding: 18px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); display: grid; gap: 2px; transition: border-color .2s; }
+.article-prices a:hover { border-color: var(--accent); }
+.article-prices .main { border-color: var(--accent); }
+.article-prices strong { font-size: 15px; }
+.article-prices span { font: 500 22px var(--mono); letter-spacing: -0.04em; color: var(--accent); }
+.article-prices small { font-size: 13px; color: var(--muted); }
+.article-cta { margin-top: 56px; padding: 30px; border-radius: var(--radius); border: 1.5px dashed var(--line-2); display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.article-cta h2 { font-size: 22px; }
+.article-cta p { margin-top: 6px; color: var(--muted); }
+.article-cta .btn { flex: none; }
+.case-shot { perspective: 1600px; }
+.case-shot .browser { transform: none; }
+.case-facts { margin-top: 26px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.case-facts div { padding: 18px 20px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); }
+.case-facts small { display: block; font: 500 12px var(--mono); color: var(--muted); }
+.case-facts strong { display: block; margin-top: 4px; font-size: 16px; }
+.guide-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.guide { padding: 30px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); box-shadow: var(--edge); display: flex; flex-direction: column; gap: 10px; transition: border-color .25s, transform .25s var(--ease); }
+.guide:hover { border-color: var(--accent); transform: translateY(-3px); }
+.guide small { font: 500 12.5px var(--mono); color: var(--accent); }
+.guide h2 { font-size: 24px; letter-spacing: -0.03em; color: var(--ink); }
+.guide p { color: var(--muted); font-size: 15.5px; flex: 1; }
+.guide span { font-weight: 600; color: var(--ink); }
+@media (max-width: 860px) {
+  .article-prices, .case-facts, .guide-list { grid-template-columns: 1fr; }
+  .article-cta { flex-direction: column; align-items: flex-start; padding: 24px; }
+  .article > p { font-size: 16.5px; }
+}
+.proj-links { display: flex; flex-wrap: wrap; gap: 6px 22px; }
+.proj-link-2 { color: var(--muted); }
+.price-note a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
