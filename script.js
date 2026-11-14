@@ -217,64 +217,74 @@
   // Nur auf der Startseite
   const form = document.getElementById("contact-form");
   if (form) {
-    // ---------- Preisrechner ----------
-    const PAGE_PRICE = [120, 250];
-    const MIN_PAGES = 1;
-    const MAX_PAGES = 30;
-    let pages = 4;
-    const stepper = document.querySelector(".stepper");
+    // ---------- Preisrechner (Fixpreise) ----------
+    const PACKS = {
+      start: { name: "Start", base: 990, pages: 3, google: false, from: false },
+      kmu: { name: "KMU", base: 1990, pages: 7, google: true, from: false },
+      pro: { name: "Pro", base: 3990, pages: 15, google: true, from: true },
+    };
+    const PLANS = { 0: "", 39: "Basis", 59: "Plus", 119: "Pro" };
+    const PAGE_PRICE = 190;
+    const MAX_EXTRA_PAGES = 20;
+    let extraPages = 0;
+    const calc = document.getElementById("rechner");
+    const stepper = calc.querySelector(".stepper");
     const totalEl = document.getElementById("calc-total");
     const summaryEl = document.getElementById("calc-summary");
-    const extras = document.querySelectorAll("[data-extra]");
+    const payEl = document.getElementById("calc-pay");
+    const pagesHint = document.getElementById("calc-pages-hint");
+    const extras = calc.querySelectorAll("[data-extra]");
+    const googleBox = calc.querySelector('[data-extra="google"]');
     const scopeSelect = document.getElementById("scope");
     const message = document.getElementById("message");
 
-    const chf = (n) => (Math.round(n / 10) * 10).toLocaleString("de-CH");
+    const chf = (n) => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, "’");
+    const packKey = () => calc.querySelector('input[name="pack"]:checked').value;
+    const planPrice = () => Number(calc.querySelector('input[name="plan"]:checked').value);
 
     const estimate = () => {
-      const pageMin = pages * PAGE_PRICE[0];
-      const pageMax = pages * PAGE_PRICE[1];
-      let min = pageMin;
-      let max = pageMax;
+      const pack = PACKS[packKey()];
+      const pages = pack.pages + extraPages;
+      const sub = pack.base + extraPages * PAGE_PRICE;
+      let total = sub;
       const chosen = [];
-
       extras.forEach((box) => {
-        if (!box.checked) return;
-        const d = box.dataset;
+        if (!box.checked || box.disabled) return;
         chosen.push(box.closest(".extra").querySelector("span").textContent);
-        if (d.pct) {
-          min += pageMin * Number(d.pct);
-          max += pageMax * Number(d.pct);
-        } else if (d.perPageMin) {
-          min += pages * Number(d.perPageMin);
-          max += pages * Number(d.perPageMax);
-        } else {
-          min += Number(d.min);
-          max += Number(d.max);
-        }
+        total += box.dataset.pct ? sub * Number(box.dataset.pct) : Number(box.dataset.fixed);
       });
-
-      return { min, max, chosen };
+      total = Math.round(total / 10) * 10;
+      return { pack, pages, total, chosen, plan: planPrice() };
     };
 
-    const pagesLabel = () => `${pages} ${pages === 1 ? "Seite" : "Seiten"}`;
-
     const render = () => {
-      const { min, max } = estimate();
-      stepper.querySelector("output").textContent = pages;
-      stepper.querySelector('[data-step="-1"]').disabled = pages <= MIN_PAGES;
-      stepper.querySelector('[data-step="1"]').disabled = pages >= MAX_PAGES;
-      totalEl.textContent = `CHF ${chf(min)} – ${chf(max)}`;
-      summaryEl.textContent = `einmalig · ${pagesLabel()}`;
+      const { pack, pages, total, plan } = estimate();
+      googleBox.disabled = pack.google;
+      googleBox.closest(".extra").classList.toggle("is-included", pack.google);
+      googleBox.closest(".extra").querySelector("small").textContent = pack.google ? "inklusive" : "+ 190";
+      stepper.querySelector("output").textContent = extraPages;
+      stepper.querySelector('[data-step="-1"]').disabled = extraPages <= 0;
+      stepper.querySelector('[data-step="1"]').disabled = extraPages >= MAX_EXTRA_PAGES;
+      pagesHint.textContent = `${pack.pages} inklusive · je CHF ${PAGE_PRICE}`;
+      totalEl.textContent = `${pack.from ? "ab " : ""}CHF ${chf(total)}`;
+      let summary = `einmalig · ${pack.name} · bis ${pages} Seiten`;
+      if (plan) {
+        summary += ` · dazu CHF ${plan} pro Monat (${PLANS[plan]})`;
+        if (pack.name === "KMU" && plan === 59) summary += ", die ersten 3 Monate gratis";
+      }
+      summaryEl.textContent = summary;
+      payEl.textContent = pack.from
+        ? "Die Hälfte bei Auftrag, die Hälfte bei Abgabe"
+        : `CHF ${chf(total / 2)} bei Auftrag, CHF ${chf(total / 2)} bei Abgabe`;
     };
 
     stepper.addEventListener("click", (e) => {
       const btn = e.target.closest("button[data-step]");
       if (!btn) return;
-      pages = Math.min(MAX_PAGES, Math.max(MIN_PAGES, pages + Number(btn.dataset.step)));
+      extraPages = Math.min(MAX_EXTRA_PAGES, Math.max(0, extraPages + Number(btn.dataset.step)));
       render();
     });
-    extras.forEach((box) => box.addEventListener("change", render));
+    calc.addEventListener("change", render);
     render();
 
     // Leistungsseiten übergeben die gewünschte Leistung über die Adresse
@@ -329,17 +339,18 @@
       link.addEventListener("click", () => { scopeSelect.value = link.dataset.scope; });
     });
 
-    // Schätzung ins Kontaktformular übernehmen
+    // Berechneten Preis ins Kontaktformular übernehmen
     document.getElementById("calc-cta").addEventListener("click", () => {
-      const { min, max, chosen } = estimate();
+      const { pack, pages, total, chosen, plan } = estimate();
       const lines = [
-        "Meine Schätzung aus dem Preisrechner:",
-        `– ${pagesLabel()}`,
-        `– Extras: ${chosen.length ? chosen.join(", ") : "keine"}`,
-        `Geschätzt: CHF ${chf(min)} – ${chf(max)}`,
+        "Mein Paket aus dem Preisrechner:",
+        `– Paket ${pack.name}, bis ${pages} Seiten`,
+        `– Zusätze: ${chosen.length ? chosen.join(", ") : "keine"}`,
+        `– Betreuung: ${plan ? `${PLANS[plan]}, CHF ${plan} pro Monat` : "keine"}`,
+        `Preis: ${pack.from ? "ab " : ""}CHF ${chf(total)} einmalig`,
       ];
       message.value = `${lines.join("\n")}\n\n`;
-      scopeSelect.value = pages === 1 ? "Onepager" : pages <= 5 ? "Kleine Website" : "Grössere Website";
+      scopeSelect.value = `Paket ${pack.name}`;
       message.closest(".field").classList.remove("invalid");
 
       document.getElementById("kontakt").scrollIntoView({ behavior: "smooth" });
